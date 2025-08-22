@@ -44,9 +44,11 @@ ai-skills-analyzer/
 ### Setup and Run
 
 1. **Clone or download this project**
-2. **Set your OpenAI API key:**
+2. **Set env variables:**
    ```bash
-   export OPENAI_API_KEY="your-api-key-here"
+   OPENAI_API_KEY="your-api-key-here"
+   GITHUB_TOKEN="your-gh-token-here"
+   GITHUB_USERNAME="your-gh-username-here"
    ```
 3. **Run the analysis:**
    ```bash
@@ -78,10 +80,10 @@ The analyzer generates comprehensive reports including:
 
 ### Latest Analysis Results (Generated: 2025-08-22)
 - **Developer Analyzed**: dang-w (8-year frontend/backend developer)
-- **Commits Processed**: 7 across 16 repositories with 12-month temporal analysis
+- **Commits Processed**: 159 across 15 repositories with 12-month temporal analysis
 - **Experience Level**: Senior (correctly identified)
-- **Top Skills**: JSON (10/10), Python (4.2/10), TypeScript (3.8/10)
-- **Analysis Time**: 35 seconds
+- **Top Skills**: JSON (10/10), PNG (9.5/10), Python (7.5/10)
+- **Analysis Time**: ~60~ seconds
 - **Cost**: ~$0.02-0.05
 
 **Note**: Current skill scoring has known limitations (see [Areas Requiring Refinement](#-areas-requiring-refinement) for details)
