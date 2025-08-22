@@ -489,9 +489,25 @@ Format your response clearly with these sections, emphasizing GROWTH and PROGRES
     def _parse_ai_response(self, analysis_text: str, language_usage: Counter) -> SkillAssessment:
         """Parse AI response into structured assessment"""
         
-        # Extract technical skills (basic parsing)
+        # Define non-programming file extensions to exclude from skill assessment
+        excluded_extensions = {
+            'json', 'xml', 'yaml', 'yml', 'toml', 'ini', 'cfg', 'conf',  # Config files
+            'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'bmp', 'webp',    # Images
+            'pdf', 'doc', 'docx', 'txt', 'rtf',                          # Documents
+            'md', 'rst', 'html', 'htm',                                   # Markup/docs
+            'csv', 'tsv', 'xlsx', 'xls',                                 # Data files
+            'zip', 'tar', 'gz', 'rar', '7z',                            # Archives
+            'log', 'tmp', 'cache', 'lock',                               # System files
+            'gitignore', 'gitkeep', 'env', 'example'                     # Other non-code
+        }
+        
+        # Extract technical skills (basic parsing) - exclude non-programming extensions
         technical_skills = {}
         for lang, count in language_usage.most_common(10):
+            # Skip non-programming file extensions
+            if lang.lower() in excluded_extensions:
+                continue
+                
             # Estimate proficiency based on usage frequency
             max_count = language_usage.most_common(1)[0][1] if language_usage else 1
             proficiency = min(10, (count / max_count) * 10)
